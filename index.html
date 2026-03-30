@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Haras Caboriú | Treinamento de Equitação e Três Tambores</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Poppins',sans-serif;background:url('fundo-tres-tambores.jpg') center/cover fixed no-repeat;color:white}
+
+body::before{content:"";position:fixed;inset:0;background:rgba(2,6,23,0.85);z-index:-1}
+
+header{
+position:fixed;
+width:100%;
+top:0;
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(8px);
+z-index:1000;
+}
+
+.nav{
+max-width:1200px;
+margin:auto;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px;
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:10px;
+font-weight:700;
+font-size:20px;
+}
+
+.logo img{height:45px}
+
+.nav a{
+color:white;
+text-decoration:none;
+margin-left:20px;
+font-weight:500;
+}
+
+.hero{
+height:100vh;
+position:relative;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+overflow:hidden;
+}
+
+.hero video{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+object-fit:cover;
+z-index:-2;
+}
+
+.hero::after{
+content:"";
+position:absolute;
+inset:0;
+background:rgba(0,0,0,0.18);
+z-index:-1;
+}
+
+.hero h1{
+font-size:56px;
+max-width:800px;
+}
+
+.hero p{
+margin-top:15px;
+font-size:20px;
+opacity:0.9;
+}
+
+.btn{
+margin-top:30px;
+display:inline-block;
+padding:16px 36px;
+background:#22c55e;
+color:white;
+text-decoration:none;
+border-radius:10px;
+font-weight:600;
+transition:0.3s;
+}
+
+.btn:hover{
+transform:scale(1.05);
+background:#16a34a;
+}
+
+.section{
+padding:100px 20px;
+max-width:1200px;
+margin:auto;
+}
+
+.section h2{
+text-align:center;
+font-size:36px;
+margin-bottom:50px;
+}
+
+.services{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
+}
+
+.card{
+background:#1e293b;
+padding:30px;
+border-radius:14px;
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+.gallery{
+columns:3 250px;
+column-gap:15px;
+}
+
+.gallery-item{
+position:relative;
+margin-bottom:15px;
+cursor:pointer;
+}
+
+.gallery-item img{
+width:100%;
+border-radius:12px;
+display:block;
+transition:transform .3s ease, filter .3s ease;
+}
+
+.gallery-item:hover img{
+transform:scale(1.04);
+filter:brightness(1.1);
+}
+
+.gallery-item::after{
+content:"❤";
+position:absolute;
+right:10px;
+top:10px;
+background:rgba(0,0,0,0.6);
+width:32px;
+height:32px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:16px;
+opacity:0;
+transition:.3s;
+}
+
+.gallery-item:hover::after{
+opacity:1;
+}
+
+.gallery img{
+width:100%;
+border-radius:10px;
+height:230px;
+object-fit:cover;
+}
+
+.map{
+margin-top:40px;
+border-radius:12px;
+overflow:hidden;
+}
+
+footer{
+text-align:center;
+padding:30px;
+background:rgba(0,0,0,0.85);
+margin-top:50px;
+}
+
+#local{
+background:rgba(0,0,0,0.65);
+border-radius:16px;
+}
+
+.fade{
+opacity:0;
+transform:translateY(40px);
+transition:all 1s ease;
+}
+
+.fade.show{
+opacity:1;
+transform:translateY(0);
+}
+
+.whatsapp-float{
+position:fixed;
+right:20px;
+bottom:20px;
+background:#25D366;
+color:white;
+width:60px;
+height:60px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:30px;
+text-decoration:none;
+box-shadow:0 8px 20px rgba(0,0,0,0.3);
+z-index:2000;
+transition:transform .2s;
+}
+
+.whatsapp-float:hover{
+transform:scale(1.1);
+}
+
+
+.photo-modal{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.9);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:3000;
+}
+
+.photo-modal img{
+max-width:90%;
+max-height:90%;
+border-radius:10px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="nav">
+<div class="logo">
+<img src="19ef9d27-fdc3-4883-b3cd-031594c606e1.jpg" alt="Logo Haras">
+Haras Caboriú
+</div>
+
+<div>
+<a href="#sobre">Sobre</a>
+<a href="#servicos">Treinamento</a>
+<a href="#galeria">Galeria</a>
+<a href="#local">Localização</a>
+</div>
+</div>
+</header>
+
+<section class="hero">
+<video autoplay muted loop playsinline>
+<source src="1bdaf9b7-bb5c-48f0-89ec-63a6f1a27c88.mp4" type="video/mp4">
+</video>
+<div>
+<h1>Centro Profissional de Treinamento de Três Tambores</h1>
+<p>Equitação • Performance • Estrutura de Haras</p>
+
+<a class="btn" href="https://wa.me/5547997098575?text=Olá,%20quero%20agendar%20uma%20aula%20no%20Haras%20Caboriú" target="_blank">
+Agende conosco sua aula
+</a>
+</div>
+</section>
+
+<section id="sobre" class="section fade">
+<h2>Sobre o Haras</h2>
+<p style="text-align:center;max-width:800px;margin:auto">
+O Haras Caboriú é um centro especializado em treinamento de cavalos e cavaleiros na modalidade Três Tambores.
+Oferecemos estrutura completa para evolução esportiva, aulas de equitação e aluguel de baias para cavalos.
+</p>
+</section>
+
+<section id="servicos" class="section fade">
+<h2>Treinamentos e Serviços</h2>
+
+<div class="services">
+
+<div class="card">
+<h3>Treinamento de Equitação</h3>
+<p>Aulas para iniciantes e avançados com metodologia profissional.</p>
+</div>
+
+<div class="card">
+<h3>Treinamento Três Tambores</h3>
+<p>Preparação técnica para competições e alto desempenho.</p>
+</div>
+
+<div class="card">
+<h3>Aluguel de Baias</h3>
+<p>Estrutura segura e confortável para alojamento de cavalos.</p>
+</div>
+
+</div>
+</section>
+
+<section id="galeria" class="section fade">
+<h2>Galeria do Haras</h2>
+
+<div class="gallery">
+<div class="gallery-item"><img src="WhatsApp Image 2026-03-26 at 12.39.24 (1).jpeg" onclick="openPhoto(this.src)"></div>
+<div class="gallery-item"><img src="WhatsApp Image 2026-03-26 at 12.39.24 (2).jpeg" onclick="openPhoto(this.src)"></div>
+<div class="gallery-item"><img src="WhatsApp Image 2026-03-26 at 12.39.24 (3).jpeg" onclick="openPhoto(this.src)"></div>
+<div class="gallery-item"><img src="WhatsApp Image 2026-03-26 at 12.39.24.jpeg" onclick="openPhoto(this.src)"></div>
+</div>
+
+<div style="text-align:center;margin-top:40px">
+<a class="btn" href="https://www.instagram.com/ctevertonrussi/" target="_blank">Ver mais no Instagram</a>
+</div>
+
+</section>
+
+
+
+<section id="local" class="section fade">
+<h2>Localização</h2>
+
+<div class="map">
+
+<iframe
+src="https://www.google.com/maps?q=haras%20caboriu&output=embed"
+width="100%"
+height="400"
+style="border:0"
+allowfullscreen=""
+loading="lazy">
+</iframe>
+
+</div>
+
+<div style="text-align:center;margin-top:30px">
+<a class="btn" href="https://wa.me/5547997098575?text=Olá,%20quero%20agendar%20uma%20aula%20no%20Haras%20Caboriú" target="_blank">
+Falar no WhatsApp
+</a>
+</div>
+
+</section>
+
+<footer>
+<p>© 2026 Haras Caboriú • Treinamento de Equitação e Três Tambores</p>
+</footer>
+
+<script>
+
+const elements = document.querySelectorAll('.fade');
+
+const observer = new IntersectionObserver(entries => {
+entries.forEach(entry => {
+if(entry.isIntersecting){
+entry.target.classList.add('show');
+}
+});
+});
+
+elements.forEach(el => observer.observe(el));
+
+
+function openPhoto(src){
+const modal=document.getElementById('photoModal');
+const img=document.getElementById('modalImg');
+img.src=src;
+modal.style.display='flex';
+}
+
+function closePhoto(){
+document.getElementById('photoModal').style.display='none';
+}
+
+</script>
+
+<a class="whatsapp-float" href="https://wa.me/5547997098575?text=Olá,%20quero%20agendar%20uma%20aula%20no%20Haras%20Caboriú" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width:32px;height:32px"> </a>
+
+<div class="photo-modal" id="photoModal" onclick="closePhoto()">
+<img id="modalImg">
+</div>
+
+</body>
+</html>
